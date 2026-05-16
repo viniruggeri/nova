@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    background: #040816;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background: #040816;
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  }
+
+  ::selection {
+    background: rgba(91, 200, 232, 0.28);
+    color: white;
+  }
+}
+
+@layer components {
+  .nova-button {
+    @apply inline-flex min-h-12 items-center justify-center rounded-full border px-6 text-sm font-medium uppercase transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nova-light/50;
+  }
+
+  .nova-button-primary {
+    @apply border-nova-light/30 bg-nova-mid/10 text-nova-light shadow-glow hover:border-nova-light/60 hover:bg-nova-mid/15 hover:text-white;
+  }
+
+  .nova-button-secondary {
+    @apply border-white/10 bg-white/[0.03] text-white/70 hover:border-nova-mid/40 hover:bg-white/[0.06] hover:text-white;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.nova-field {
+  background:
+    linear-gradient(115deg, rgba(91, 200, 232, 0.1), transparent 24%),
+    linear-gradient(260deg, rgba(26, 111, 168, 0.18), transparent 34%),
+    linear-gradient(180deg, rgba(5, 10, 31, 0), rgba(4, 8, 22, 0.82));
+}
+
+.nova-field::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.024) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, transparent, black 18%, black 78%, transparent);
+}
+
+.nova-scan {
+  background: linear-gradient(180deg, transparent, rgba(143, 223, 255, 0.055), transparent);
+  animation: novaScan 11s ease-in-out infinite;
+}
+
+.nova-spark {
+  clip-path: polygon(50% 0, 58% 38%, 100% 50%, 58% 62%, 50% 100%, 42% 62%, 0 50%, 42% 38%);
+  background: linear-gradient(135deg, #ffffff, #8fdfff 42%, #5bc8e8 72%, #1a6fa8);
+  filter: drop-shadow(0 0 12px rgba(143, 223, 255, 0.55));
+  animation: novaPulse 4.5s ease-in-out infinite;
+}
+
+.intro-aurora {
+  background:
+    radial-gradient(circle at 42% 46%, rgba(143, 223, 255, 0.14), transparent 24%),
+    radial-gradient(circle at 60% 58%, rgba(26, 111, 168, 0.16), transparent 32%),
+    linear-gradient(180deg, #050a1f, #040816);
+}
+
+.intro-spark {
+  clip-path: polygon(50% 0, 58% 38%, 100% 50%, 58% 62%, 50% 100%, 42% 62%, 0 50%, 42% 38%);
+  background: linear-gradient(135deg, #ffffff, #8fdfff 42%, #5bc8e8 76%, #1a6fa8);
+  filter:
+    drop-shadow(0 0 14px rgba(255, 255, 255, 0.72))
+    drop-shadow(0 0 36px rgba(91, 200, 232, 0.45));
+}
+
+.intro-logo-mask {
+  filter:
+    drop-shadow(0 22px 60px rgba(0, 0, 0, 0.36))
+    drop-shadow(0 0 42px rgba(91, 200, 232, 0.14));
+}
+
+.nova-orbit-wrap {
+  filter: drop-shadow(0 0 36px rgba(91, 200, 232, 0.12));
+}
+
+.nova-logo-system {
+  transform-origin: center;
+  will-change: opacity, transform;
+}
+
+.nova-orbit {
+  position: absolute;
+  inset: 12%;
+  border: 1px solid rgba(143, 223, 255, 0.14);
+  border-radius: 999px;
+}
+
+.nova-orbit-a {
+  animation: orbitSlow 28s linear infinite;
+}
+
+.nova-orbit-b {
+  inset: 22% 5%;
+  border-color: rgba(91, 200, 232, 0.2);
+  transform: rotate(-18deg);
+  animation: orbitReverse 22s linear infinite;
+}
+
+.nova-orbit-c {
+  inset: 30% 18%;
+  border-color: rgba(255, 255, 255, 0.08);
+  transform: rotate(24deg);
+  animation: orbitSlow 36s linear infinite;
+}
+
+@keyframes novaScan {
+  0%, 100% {
+    opacity: 0.22;
+    transform: translateY(-10%);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(8%);
+  }
+}
+
+@keyframes novaPulse {
+  0%, 100% {
+    opacity: 0.86;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes orbitSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitReverse {
+  from {
+    transform: rotate(-18deg);
+  }
+
+  to {
+    transform: rotate(-378deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
